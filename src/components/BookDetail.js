@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { fetchArtworkById } from '../apis'
-
+import { useNavigate } from 'react-router-dom'
 export default function BookDetail() {
   const [book, setBook] = useState(null)
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchData() {
@@ -14,12 +15,14 @@ export default function BookDetail() {
     }
     fetchData()
   }, [])
-  console.log('book: ', book)
   const thumbnail = book?.thumbnail || {}
   const { alt_text, height, lqip, width } = thumbnail
   return (
     <div>
       <h2>Book Detail</h2>
+      <span className='back-link cursor' onClick={() => navigate('/')}>
+        <span>{'<--'} </span>back
+      </span>
       <div
         style={{
           display: 'flex',
@@ -46,7 +49,7 @@ export default function BookDetail() {
     </div>
   )
 }
-function Thumbnail({ altText, src, width, height }) {
+export function Thumbnail({ altText, src, width = '100', height = '100' }) {
   return <img src={src} alt={altText} width={width} height={height} />
 }
 
