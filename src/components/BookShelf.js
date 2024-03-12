@@ -6,12 +6,13 @@ import { fetchArtworks } from '../apis'
 import { SearchComponent, FilterComponent } from '../components/common'
 
 export default function BookShelf() {
-  const [books, setBooks] = useState([])
-  const [activePage, setActivePage] = useState(1)
-  const [isSearched, setIsSearched] = useState(false)
-  const [isFiltered, setIsFiltered] = useState(false)
+  const [books, setBooks] = useState([]) // State to hold fetched books
+  const [activePage, setActivePage] = useState(1) // State to track active pagination page
+  const [isSearched, setIsSearched] = useState(false) // State to track if search is applied
+  const [isFiltered, setIsFiltered] = useState(false) // State to track if filter is applied
 
   useEffect(() => {
+    // Fetch data when active page changes
     const fetchData = async () => {
       const fetchedBooks = await fetchArtworks(activePage)
       setBooks(fetchedBooks)
@@ -20,6 +21,7 @@ export default function BookShelf() {
   }, [activePage])
 
   const handlePageChange = async (pageNumber) => {
+    // Update active page when pagination item is clicked
     setActivePage(pageNumber)
   }
 
@@ -69,21 +71,23 @@ export default function BookShelf() {
     setIsFiltered(true)
   }
 
-  const onClearSearch = async () => {
-    // Fetch initial data
+  const onClear = async () => {
+    // Fetch initial data and reset states
     const fetchedBooks = await fetchArtworks(1)
     setBooks(fetchedBooks)
     setActivePage(1)
     setIsSearched(false)
     setIsFiltered(false)
   }
+
+  // Determine whether to show reset button and message
   const showResetBtnAndMsg = isSearched && isFiltered && !books?.data?.length
   return (
     <>
       <h1 className='display-1'>Book Shelf</h1>
       <SearchComponent onSearch={handleSearch} />
       <FilterComponent onFilter={onFilter} />
-      {showResetBtnAndMsg && <span onClick={onClearSearch}>Clear search</span>}
+      {showResetBtnAndMsg && <span onClick={onClear}>Clear search</span>}
       <Books books={books} />
       {showResetBtnAndMsg && <h5>No matching search or filter criteria</h5>}
       <Pagination className='px-4 justify-content-center mt-6'>
@@ -104,12 +108,3 @@ export default function BookShelf() {
     </>
   )
 }
-
-//Modern Art', 'Essentials'
-/**
- * Prints and Drawings
- * Modern Art', 'Essentials
- * Contemporary Art
- * painting", "european painting
- * Painting and Sculpture of Europe", "Essentials
- */

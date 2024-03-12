@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Overview
+1. The Bookshelf app displays a list of books fetched from an api
+2. The idea is to provide the user with a list of articles which the user can glance through
+3. The user is also provided with Search an d filter functionalities.
+4. States are only kept within functions where necessary and there is no global state as the app can function efficiently with component states. No need for global state. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# App.js
+1. This is the parent app that renders the following component:
 
-## Available Scripts
+# BookShelf
+1.  The BookShelf component fetches the initial list of articles on page load and uses some functions within the app. They are:
+     - handlePageChange: handles data fetching and pagination
+     - handleSearch: for search fuctionality
+     - onFilter: for filtering the articles based on criteria stated in categories list
+     - onClear: function for resetting the book list when no search criteria is met
+      
+     
+2. # Books
+    Receives the list of books fetched and iterates over them. it returns a list of <Book>
 
-In the project directory, you can run:
+3. # Book
+   A single book that renders the bookk details based on parameters received.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. # BookDetail
+    This is a seprate page for rendering an article/book based on the user's selection
+    It provides functionality for the user to navigate back to the homw screen
+     
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# apis
+    The apis folder contains the fucntions used for asunchronously fetching the books
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##### Categories ##################     
+ [
+  'Modern Art, Essentials',
+  'Prints and Drawings',
+  'Contemporary Art',
+  'painting, european painting',
+  'Painting and Sculpture of Europe',
+]
