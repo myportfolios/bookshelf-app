@@ -85,8 +85,10 @@ export default function BookShelf() {
   return (
     <>
       <h1 className='display-1'>Book Shelf</h1>
-      <SearchComponent onSearch={handleSearch} />
-      <FilterComponent onFilter={onFilter} />
+      <div className='d-flex justify-content-center'>
+        <SearchComponent onSearch={handleSearch} />
+        <FilterComponent onFilter={onFilter} />
+      </div>
       {showResetBtnAndMsg && <span onClick={onClear}>Clear search</span>}
       <Books books={books} />
       {showResetBtnAndMsg && <h5>No matching search or filter criteria</h5>}
